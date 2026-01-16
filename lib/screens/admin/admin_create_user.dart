@@ -53,6 +53,7 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
                   role: role,
                 );
                 ScaffoldMessenger.of(
+                  // ignore: use_build_context_synchronously
                   context,
                 ).showSnackBar(SnackBar(content: Text("User Created")));
                 Navigator.pop(context);
