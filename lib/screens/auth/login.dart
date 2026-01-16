@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lms_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
-  login() async {
+  Future<void> login() async {
     final auth = context.read<AuthProvider>();
     bool success = await auth.login(
       email: emailCtrl.text,

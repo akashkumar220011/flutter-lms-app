@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lms_app/models/user_model.dart';
 import 'package:lms_app/providers/auth_provider.dart';
@@ -5,7 +7,7 @@ import 'package:provider/provider.dart';
 
 class AdminManageUsers extends StatelessWidget {
   final String role;
-  AdminManageUsers({required this.role});
+  const AdminManageUsers({super.key, required this.role});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class AdminManageUsers extends StatelessWidget {
                     await auth.deleteUser(user.id!);
                     ScaffoldMessenger.of(
                       context,
+                    // ignore: unnecessary_brace_in_string_interps
                     ).showSnackBar(SnackBar(content: Text("${role} deleted")));
                   },
                   icon: Icon(Icons.delete, color: Colors.red),

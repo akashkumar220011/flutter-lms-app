@@ -1,9 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/course_provider.dart';
 import '../../providers/auth_provider.dart';
 
 class AllCoursesScreen extends StatelessWidget {
+  const AllCoursesScreen({super.key});
+
   @override
 Widget build(BuildContext context) {
   final courseProvider = context.read<CourseProvider>();

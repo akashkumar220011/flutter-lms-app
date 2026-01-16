@@ -4,6 +4,8 @@ import '../../providers/course_provider.dart';
 import '../../providers/auth_provider.dart';
 
 class EnrolledCoursesScreen extends StatelessWidget {
+  const EnrolledCoursesScreen({super.key});
+
   @override
 Widget build(BuildContext context) {
   final auth = context.read<AuthProvider>();

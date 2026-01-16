@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lms_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +18,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   String role = 'student';
 
-  signup() async {
+  Future<void> signup() async {
     final auth = context.read<AuthProvider>();
 
     bool success = await auth.signup(
@@ -61,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               SizedBox(height: 10),
               DropdownButtonFormField<String>(
-                value: role,
+                initialValue: role,
                 decoration: InputDecoration(labelText: "Role"),
                 items: ['admin', 'teacher', 'student']
                     .map(

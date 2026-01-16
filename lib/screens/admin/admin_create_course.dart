@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lms_app/models/user_model.dart';
 import 'package:lms_app/providers/auth_provider.dart';
@@ -43,7 +45,7 @@ class _AdminCreateCourseState extends State<AdminCreateCourse> {
                 }
                 final teachers = snapshot.data!;
                 return DropdownButtonFormField<int>(
-                  value: selectedTecherId,
+                  initialValue: selectedTecherId,
                   hint: Text("Select Teacher"),
                   items: teachers.map((t) {
                     return DropdownMenuItem(value: t.id, child: Text(t.name));
