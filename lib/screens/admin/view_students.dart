@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:lms_app/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 import '../../db/database_helper.dart';
 
 class ViewStudentsScreen extends StatefulWidget {
@@ -36,7 +40,20 @@ class _ViewStudentsScreenState extends State<ViewStudentsScreen> {
         itemCount: students.length,
         itemBuilder: (context, index) {
           final s = students[index];
-          return ListTile(title: Text(s['name']), subtitle: Text(s['email']));
+          return ListTile(
+            title: Text(s['name']),
+            subtitle: Text(s['email']),
+            trailing: IconButton(
+              onPressed: () async {
+                await context.read<AuthProvider>().deleteUser(s['id']);
+                fetchStudents();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Student deleted")),
+                );
+              },
+              icon: const Icon(Icons.delete, color: Colors.red),
+            ),
+          );
         },
       ),
     );
